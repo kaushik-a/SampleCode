@@ -76,7 +76,7 @@ class VisaApiClient {
     keyStore.load(new FileInputStream(p12Path), p12Password.toArray)
     val context = SSLContexts.custom().loadKeyMaterial(keyStore, p12Password.toCharArray)
       .build()
-    val sslSocketFactory = new SSLConnectionSocketFactory(context, Array("TLSv1"), null,
+    val sslSocketFactory = new SSLConnectionSocketFactory(context, Array("TLSv1.2"), null,
       SSLConnectionSocketFactory.getDefaultHostnameVerifier)
     HttpClients.custom().setSSLSocketFactory(sslSocketFactory).build
   }
